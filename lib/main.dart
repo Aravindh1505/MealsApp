@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Raleway',
         textTheme: ThemeData.light().textTheme.copyWith(
               bodyText1: TextStyle(color: Colors.black),
-              bodyText2: TextStyle(color: Colors.red),
+              bodyText2: TextStyle(color: Colors.black),
               headline6: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.w700,
@@ -31,8 +31,8 @@ class MyApp extends StatelessWidget {
               ),
             ),
       ),
-      home: CategoriesScreen(),
       routes: {
+        Constants.ROUTE_HOME: (ctx) => CategoriesScreen(),
         Constants.ROUTE_CATEGORY_MEALS: (ctx) => CategoryMealsScreen(),
       },
     );
