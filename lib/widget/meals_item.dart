@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:meals_app/models/meal.dart';
-import 'package:meals_app/utils/constants.dart';
+
+import '../models/meal.dart';
+import '../utils/constants.dart';
 
 class MealsItem extends StatelessWidget {
   final Meal meal;
@@ -15,6 +16,16 @@ class MealsItem extends StatelessWidget {
         deleteMeal(value);
       }
     });
+  }
+
+  Widget buildRowIcons(String title, IconData icon) {
+    return Row(
+      children: [
+        Icon(icon),
+        const SizedBox(width: 5),
+        Text(title),
+      ],
+    );
   }
 
   @override
@@ -68,27 +79,9 @@ class MealsItem extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Row(
-                      children: [
-                        Icon(Icons.schedule),
-                        SizedBox(width: 5),
-                        Text('${meal.duration} min'),
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        Icon(Icons.work),
-                        SizedBox(width: 5),
-                        Text('${meal.complexity.toString().split('.').last}'),
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        Icon(Icons.monetization_on),
-                        SizedBox(width: 5),
-                        Text('${meal.affordability.toString().split('.').last}'),
-                      ],
-                    ),
+                    buildRowIcons('${meal.duration} min', Icons.schedule),
+                    buildRowIcons(Constants.getEnumString(meal.complexity.toString()), Icons.work),
+                    buildRowIcons(Constants.getEnumString(meal.affordability.toString()), Icons.monetization_on),
                   ],
                 ),
               )

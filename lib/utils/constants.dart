@@ -62,6 +62,10 @@ class Constants {
         ),
   );
 
+  static String getEnumString(String data) {
+    return data.split('.').last;
+  }
+
   static const DUMMY_CATEGORIES = const [
     Category(
       id: 'c1',

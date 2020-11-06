@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:meals_app/utils/constants.dart';
+
+import '../utils/constants.dart';
 
 class ErrorScreen extends StatelessWidget {
   @override

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:meals_app/utils/constants.dart';
 
 import '../models/meal.dart';
 import '../widget/error_screen.dart';
@@ -38,6 +39,16 @@ class MealDetailsScreen extends StatelessWidget {
     );
   }
 
+  Widget buildRowIcons(String title, IconData icon) {
+    return Row(
+      children: [
+        Icon(icon),
+        const SizedBox(width: 5),
+        Text(title),
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final selectedMeal = ModalRoute.of(context).settings.arguments as Meal;
@@ -62,33 +73,13 @@ class MealDetailsScreen extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Row(
-                            children: [
-                              Icon(Icons.schedule),
-                              SizedBox(width: 5),
-                              Text('${selectedMeal.duration} min'),
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              Icon(Icons.work),
-                              SizedBox(width: 5),
-                              Text('${selectedMeal.complexity.toString().split('.').last}'),
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              Icon(Icons.monetization_on),
-                              SizedBox(width: 5),
-                              Text('${selectedMeal.affordability.toString().split('.').last}'),
-                            ],
-                          ),
+                          buildRowIcons('${selectedMeal.duration} min', Icons.schedule),
+                          buildRowIcons(Constants.getEnumString(selectedMeal.complexity.toString()), Icons.work),
+                          buildRowIcons(Constants.getEnumString(selectedMeal.affordability.toString()), Icons.monetization_on),
                         ],
                       ),
                     ),
-                    Divider(
-                      thickness: 2,
-                    ),
+                    const Divider(thickness: 2),
                     buildTitle(context, 'Ingredients'),
                     buildListView(context, selectedMeal.ingredients),
                     buildTitle(context, 'Steps'),
@@ -98,7 +89,7 @@ class MealDetailsScreen extends StatelessWidget {
               ),
             ),
             floatingActionButton: FloatingActionButton(
-              child: Icon(Icons.delete),
+              child: const Icon(Icons.delete),
               onPressed: () {
                 Navigator.of(context).pop(selectedMeal.id);
               },
