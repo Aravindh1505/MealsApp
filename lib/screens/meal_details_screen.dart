@@ -92,10 +92,16 @@ class MealDetailsScreen extends StatelessWidget {
                     buildTitle(context, 'Ingredients'),
                     buildListView(context, selectedMeal.ingredients),
                     buildTitle(context, 'Steps'),
-                    buildListView(context, selectedMeal.steps)
+                    buildListView(context, selectedMeal.steps),
                   ],
                 ),
               ),
+            ),
+            floatingActionButton: FloatingActionButton(
+              child: Icon(Icons.delete),
+              onPressed: () {
+                Navigator.of(context).pop(selectedMeal.id);
+              },
             ),
           )
         : ErrorScreen();

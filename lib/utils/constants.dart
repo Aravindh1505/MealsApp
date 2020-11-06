@@ -10,9 +10,15 @@ class Constants {
   static const ROUTE_HOME = '/';
   static const ROUTE_CATEGORY_MEALS = '/category-meals';
   static const ROUTE_MEALS_DETAILS = '/meals-details';
+  static const ROUTE_FAVORITES = '/favorites';
+  static const ROUTE_FILTERS = '/filters';
+  static const ROUTE_SETTINGS = '/settings';
 
   /*ERROR*/
   static const ERROR_EMPTY_DATA = 'Oops something went wrong';
+
+  /*ASSET IMAGES*/
+  static const ASSET_COOKING = 'assets/images/ic_cooking.png';
 
   static ThemeData lightTheme = ThemeData(
     primarySwatch: Colors.blue,

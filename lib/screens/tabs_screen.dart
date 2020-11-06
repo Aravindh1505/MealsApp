@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:meals_app/screens/categories_screen.dart';
-import 'package:meals_app/screens/favorites_screen.dart';
+
+import '../screens/categories_screen.dart';
+import '../screens/favorites_screen.dart';
+import '../widget/main_drawer.dart';
 
 class TabsScreen extends StatefulWidget {
   @override
@@ -8,9 +10,47 @@ class TabsScreen extends StatefulWidget {
 }
 
 class _TabsScreenState extends State<TabsScreen> {
+  final List<Map<String, Object>> screenList = [
+    {'screen': CategoriesScreen(), 'title': 'Categories'},
+    {'screen': FavoritesScreen(), 'title': 'Favorites'},
+  ];
+
+  int _selectedIndex = 0;
+
+  void _selectedTab(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
+    return Scaffold(
+      appBar: AppBar(title: Text(screenList[_selectedIndex]['title'])),
+      body: screenList[_selectedIndex]['screen'],
+      drawer: MainDrawer(),
+      bottomNavigationBar: BottomNavigationBar(
+        onTap: _selectedTab,
+        backgroundColor: Theme.of(context).primaryColor,
+        selectedItemColor: Theme.of(context).accentColor,
+        unselectedItemColor: Colors.white,
+        currentIndex: _selectedIndex,
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.category),
+            label: 'Categories',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.favorite),
+            label: 'Favorites',
+          )
+        ],
+      ),
+    );
+  }
+}
+
+/*DefaultTabController(
       length: 2,
       child: Scaffold(
         appBar: AppBar(
@@ -35,6 +75,4 @@ class _TabsScreenState extends State<TabsScreen> {
           ],
         ),
       ),
-    );
-  }
-}
+    );*/

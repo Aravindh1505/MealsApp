@@ -8,10 +8,9 @@ class MealsItem extends StatelessWidget {
   MealsItem(this.meal);
 
   void selectedMeal(BuildContext context) {
-    Navigator.of(context).pushNamed(
-      Constants.ROUTE_MEALS_DETAILS,
-      arguments: meal,
-    );
+    Navigator.of(context).pushNamed(Constants.ROUTE_MEALS_DETAILS, arguments: meal).then((value) {
+      print('value : $value');
+    });
   }
 
   @override
