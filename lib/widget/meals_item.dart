@@ -1,26 +1,38 @@
 import 'package:flutter/material.dart';
 import 'package:meals_app/models/meal.dart';
+import 'package:meals_app/utils/constants.dart';
 
 class MealsItem extends StatelessWidget {
   final Meal meal;
 
   MealsItem(this.meal);
 
+  void selectedMeal(BuildContext context) {
+    Navigator.of(context).pushNamed(
+      Constants.ROUTE_MEALS_DETAILS,
+      arguments: meal,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return InkWell(
+      onTap: () => selectedMeal(context),
       child: Container(
         child: Card(
           elevation: 5,
           margin: const EdgeInsets.all(10),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(15),
+          ),
           child: Column(
             children: [
               Stack(
                 children: [
                   ClipRRect(
                     borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(10),
-                      topRight: Radius.circular(10),
+                      topLeft: Radius.circular(15),
+                      topRight: Radius.circular(15),
                     ),
                     child: Image.network(
                       meal.imageUrl,

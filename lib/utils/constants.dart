@@ -9,6 +9,10 @@ class Constants {
   /*ROUTES*/
   static const ROUTE_HOME = '/';
   static const ROUTE_CATEGORY_MEALS = '/category-meals';
+  static const ROUTE_MEALS_DETAILS = '/meals-details';
+
+  /*ERROR*/
+  static const ERROR_EMPTY_DATA = 'Oops something went wrong';
 
   static ThemeData lightTheme = ThemeData(
     primarySwatch: Colors.blue,
@@ -19,14 +23,18 @@ class Constants {
     scaffoldBackgroundColor: Colors.white,
     fontFamily: 'Raleway',
     textTheme: ThemeData.light().textTheme.copyWith(
-          bodyText1: TextStyle(color: Colors.black),
-          bodyText2: TextStyle(color: Colors.red),
-          headline6: TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.w700,
-            color: Colors.black,
-          ),
+        bodyText1: TextStyle(color: Colors.black),
+        bodyText2: TextStyle(color: Colors.black),
+        headline6: TextStyle(
+          fontSize: 22,
+          fontWeight: FontWeight.w700,
+          color: Colors.black,
         ),
+        subtitle1: TextStyle(
+          fontSize: 20,
+          fontWeight: FontWeight.w500,
+          color: Colors.amber,
+        )),
   );
 
   static ThemeData darkTheme = ThemeData(
