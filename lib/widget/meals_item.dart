@@ -4,12 +4,16 @@ import 'package:meals_app/utils/constants.dart';
 
 class MealsItem extends StatelessWidget {
   final Meal meal;
+  final deleteMeal;
 
-  MealsItem(this.meal);
+  MealsItem(this.meal, this.deleteMeal);
 
   void selectedMeal(BuildContext context) {
     Navigator.of(context).pushNamed(Constants.ROUTE_MEALS_DETAILS, arguments: meal).then((value) {
       print('value : $value');
+      if (value != null) {
+        deleteMeal(value);
+      }
     });
   }
 
