@@ -29,8 +29,16 @@ class Constants {
     scaffoldBackgroundColor: Colors.white,
     fontFamily: 'Raleway',
     textTheme: ThemeData.light().textTheme.copyWith(
-        bodyText1: TextStyle(color: Colors.black),
-        bodyText2: TextStyle(color: Colors.black),
+        bodyText1: TextStyle(
+          color: Colors.black,
+          fontSize: 16,
+          fontWeight: FontWeight.normal,
+        ),
+        bodyText2: TextStyle(
+          color: Colors.grey,
+          fontSize: 14,
+          fontWeight: FontWeight.w200,
+        ),
         headline6: TextStyle(
           fontSize: 22,
           fontWeight: FontWeight.w700,
@@ -119,13 +127,12 @@ class Constants {
     ),
   ];
 
-  static const DUMMY_MEALS = const [
+  List<Meal> dummyMeals = [
     Meal(
       id: 'm1',
       categories: [
         'c1',
         'c2',
-        'c7',
       ],
       title: 'Spaghetti with Tomato Sauce',
       affordability: Affordability.Affordable,
@@ -151,8 +158,6 @@ class Constants {
       id: 'm2',
       categories: [
         'c2',
-        'c5',
-        'c8',
       ],
       title: 'Toast Hawaii',
       affordability: Affordability.Affordable,
@@ -171,7 +176,6 @@ class Constants {
       categories: [
         'c2',
         'c3',
-        'c4',
       ],
       title: 'Classic Hamburger',
       affordability: Affordability.Pricey,
@@ -189,7 +193,6 @@ class Constants {
       id: 'm4',
       categories: [
         'c4',
-        'c6',
       ],
       title: 'Wiener Schnitzel',
       affordability: Affordability.Luxurious,
@@ -235,7 +238,6 @@ class Constants {
       categories: [
         'c6',
         'c10',
-        'c1',
       ],
       title: 'Delicious Orange Mousse',
       affordability: Affordability.Affordable,
@@ -270,8 +272,6 @@ class Constants {
       id: 'm7',
       categories: [
         'c7',
-        'c4',
-        'c2',
       ],
       title: 'Pancakes',
       affordability: Affordability.Affordable,
@@ -302,8 +302,6 @@ class Constants {
       id: 'm8',
       categories: [
         'c8',
-        'c5',
-        'c10',
       ],
       title: 'Creamy Indian Chicken Curry',
       affordability: Affordability.Pricey,
@@ -329,8 +327,6 @@ class Constants {
       id: 'm9',
       categories: [
         'c9',
-        'c3',
-        'c6',
       ],
       title: 'Chocolate Souffle',
       affordability: Affordability.Affordable,

@@ -5,6 +5,11 @@ import '../models/meal.dart';
 import '../widget/error_screen.dart';
 
 class MealDetailsScreen extends StatelessWidget {
+  final Function setFavorites;
+  final Function isFavorite;
+
+  MealDetailsScreen(this.setFavorites, this.isFavorite);
+
   Widget buildTitle(BuildContext context, String title) {
     return Container(
       margin: const EdgeInsets.all(10),
@@ -51,12 +56,28 @@ class MealDetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final selectedMeal = ModalRoute.of(context).settings.arguments as Meal;
+    final routeArgs = ModalRoute.of(context).settings.arguments as Map<String, Object>;
+    final selectedMeal = routeArgs['meal'] as Meal;
+    final isFromFavorites = routeArgs['isFromFavorites'] as bool;
 
     return selectedMeal != null
         ? Scaffold(
             appBar: AppBar(
               title: Text(selectedMeal.title),
+              actions: [
+                Padding(
+                  padding: EdgeInsets.only(right: 20),
+                  child: GestureDetector(
+                    onTap: () {
+                      setFavorites(selectedMeal.id);
+                      if (isFromFavorites) {
+                        Navigator.of(context).pop(selectedMeal.id);
+                      }
+                    },
+                    child: Icon(isFavorite(selectedMeal.id) ? Icons.favorite : Icons.favorite_border),
+                  ),
+                )
+              ],
             ),
             body: SingleChildScrollView(
               child: Container(

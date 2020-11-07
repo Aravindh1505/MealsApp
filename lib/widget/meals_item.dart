@@ -6,11 +6,15 @@ import '../utils/constants.dart';
 class MealsItem extends StatelessWidget {
   final Meal meal;
   final deleteMeal;
+  final bool isFromFavorites;
 
-  MealsItem(this.meal, this.deleteMeal);
+  MealsItem(this.meal, this.deleteMeal, this.isFromFavorites);
 
   void selectedMeal(BuildContext context) {
-    Navigator.of(context).pushNamed(Constants.ROUTE_MEALS_DETAILS, arguments: meal).then((value) {
+    Navigator.of(context).pushNamed(Constants.ROUTE_MEALS_DETAILS, arguments: {
+      'meal': meal,
+      'isFromFavorites': isFromFavorites,
+    }).then((value) {
       print('value : $value');
       if (value != null) {
         deleteMeal(value);
