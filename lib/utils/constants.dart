@@ -6,6 +6,8 @@ import '../models/meal.dart';
 class Constants {
   static const APP_NAME = 'Meal App';
 
+  static const NO_MEALS_FOUND = 'No meals found';
+
   /*ROUTES*/
   static const ROUTE_HOME = '/';
   static const ROUTE_CATEGORY_MEALS = '/category-meals';
@@ -48,6 +50,11 @@ class Constants {
           fontSize: 20,
           fontWeight: FontWeight.w500,
           color: Colors.amber,
+        ),
+        headline3: TextStyle(
+          fontSize: 18,
+          fontWeight: FontWeight.bold,
+          color: Colors.white,
         )),
   );
 

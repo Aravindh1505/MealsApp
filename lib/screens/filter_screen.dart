@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:meals_app/models/filters.dart';
 
+import '../models/filters.dart';
+import '../widget/custom_widgets.dart';
 import '../widget/main_drawer.dart';
 
 class FilterScreen extends StatefulWidget {
@@ -27,7 +28,7 @@ class _FilterScreenState extends State<FilterScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: MainDrawer(),
-      appBar: AppBar(title: Text('Filter')),
+      appBar: CustomWidgets.getAppBar(context, 'Filter'),
       body: Column(
         children: [
           Expanded(

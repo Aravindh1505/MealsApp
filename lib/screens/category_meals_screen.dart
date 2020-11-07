@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:meals_app/utils/constants.dart';
 
 import '../models/categories.dart';
 import '../models/meal.dart';
+import '../widget/custom_widgets.dart';
 import '../widget/meals_item.dart';
 
 class CategoryMealsScreen extends StatefulWidget {
@@ -41,15 +43,20 @@ class _CategoryMealsScreenState extends State<CategoryMealsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(categoryTitle),
-      ),
-      body: ListView.builder(
-        itemBuilder: (ctx, index) {
-          return MealsItem(_displayMeals[index], _deleteMeals, false);
-        },
-        itemCount: _displayMeals.length,
-      ),
+      appBar: CustomWidgets.getAppBar(context, categoryTitle),
+      body: _displayMeals.length == 0
+          ? Center(
+              child: Text(
+                Constants.NO_MEALS_FOUND,
+                style: Theme.of(context).textTheme.headline6,
+              ),
+            )
+          : ListView.builder(
+              itemBuilder: (ctx, index) {
+                return MealsItem(_displayMeals[index], _deleteMeals, false);
+              },
+              itemCount: _displayMeals.length,
+            ),
     );
   }
 }

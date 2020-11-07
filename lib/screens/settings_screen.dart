@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../widget/custom_widgets.dart';
 import '../widget/main_drawer.dart';
 
 class SettingsScreen extends StatelessWidget {
@@ -7,9 +8,7 @@ class SettingsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: MainDrawer(),
-      appBar: AppBar(
-        title: Text('Settings'),
-      ),
+      appBar: CustomWidgets.getAppBar(context, 'Settings'),
     );
   }
 }

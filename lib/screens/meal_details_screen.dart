@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:meals_app/utils/constants.dart';
+import 'package:meals_app/widget/custom_widgets.dart';
 
 import '../models/meal.dart';
 import '../widget/error_screen.dart';
@@ -62,32 +63,42 @@ class MealDetailsScreen extends StatelessWidget {
 
     return selectedMeal != null
         ? Scaffold(
-            appBar: AppBar(
-              title: Text(selectedMeal.title),
-              actions: [
-                Padding(
-                  padding: EdgeInsets.only(right: 20),
-                  child: GestureDetector(
-                    onTap: () {
-                      setFavorites(selectedMeal.id);
-                      if (isFromFavorites) {
-                        Navigator.of(context).pop(selectedMeal.id);
-                      }
-                    },
-                    child: Icon(isFavorite(selectedMeal.id) ? Icons.favorite : Icons.favorite_border),
-                  ),
-                )
-              ],
-            ),
+            appBar: CustomWidgets.getAppBar(context, selectedMeal.title),
             body: SingleChildScrollView(
               child: Container(
                 child: Column(
                   children: [
-                    Image.network(
-                      selectedMeal.imageUrl,
-                      fit: BoxFit.cover,
-                      height: 250,
-                      width: double.infinity,
+                    Stack(
+                      children: [
+                        Image.network(
+                          selectedMeal.imageUrl,
+                          height: 200,
+                          width: double.infinity,
+                          fit: BoxFit.cover,
+                        ),
+                        Positioned(
+                          right: 0.1,
+                          top: 0.1,
+                          child: Container(
+                            color: Colors.black87,
+                            width: 50,
+                            height: 50,
+                            padding: const EdgeInsets.all(10),
+                            child: GestureDetector(
+                              onTap: () {
+                                setFavorites(selectedMeal.id);
+                                if (isFromFavorites) {
+                                  Navigator.of(context).pop(selectedMeal.id);
+                                }
+                              },
+                              child: Icon(
+                                isFavorite(selectedMeal.id) ? Icons.favorite : Icons.favorite_border,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                     Padding(
                       padding: const EdgeInsets.all(15.0),

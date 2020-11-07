@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../widget/custom_widgets.dart';
+
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
 
@@ -13,9 +15,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
+      appBar: CustomWidgets.getAppBar(context, 'Home'),
       body: Center(),
     );
   }

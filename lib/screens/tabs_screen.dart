@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../models/meal.dart';
 import '../screens/categories_screen.dart';
 import '../screens/favorites_screen.dart';
+import '../widget/custom_widgets.dart';
 import '../widget/main_drawer.dart';
 
 class TabsScreen extends StatefulWidget {
@@ -37,7 +38,7 @@ class _TabsScreenState extends State<TabsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(screenList[_selectedIndex]['title'])),
+      appBar: CustomWidgets.getAppBar(context, screenList[_selectedIndex]['title']),
       body: screenList[_selectedIndex]['screen'],
       drawer: MainDrawer(),
       bottomNavigationBar: BottomNavigationBar(
